@@ -1,0 +1,15 @@
+security:
+  basic:
+    enabled: false
+
+spring:
+  datasource:
+    initialize: true # set this to true if you want to create the database from schema.sql and have data populated in it from data.sql
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/lojugdemo
+    username: sa
+    password:
+
+logging:
+  level:
+    org.springframework.web: DEBUG
