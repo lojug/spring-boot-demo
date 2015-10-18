@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring Security Example </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -21,7 +20,7 @@
 
 <div class="container">
 
-    <form class="form-signin" th:action="@{/login}" method="post">
+    <form class="form-signin" th:classappend="${param.error}? has-error : '' " th:action="@{/login}" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputUsername" class="sr-only">Email address</label>
         <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required="required" autofocus="autofocus"/>
