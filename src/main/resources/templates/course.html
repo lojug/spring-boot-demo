@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>School Website - Edit Course Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../static/css/main.css"
+          th:href="@{css/main.css}" rel="stylesheet" media="screen"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header">
+</div>
+
+<div class="container">
+
+    <h1>Edit Course</h1>
+    <form role="form" th:action="@{/course/save}" th:object="${course}" method="post">
+        <input type="hidden" name="id" th:field="*{id}" />
+        <div class="form-group">
+            <label for="courseName">Course Name:</label>
+            <input type="text" class="form-control" id="courseName" name="courseName" th:field="*{courseName}" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="courseDescription">Course Description:</label>
+            <textarea id="courseDescription" class="form-control" name="courseDescription" th:field="*{courseDescription}" required="required"></textarea>
+        </div>
+        <button type="submit" class="btn btn-default">Save</button>
+    </form>
+
+    <a href="#" th:href="@{/courses}">Back to Courses</a>
+
+
+</div>
+
+</body>
+</html>

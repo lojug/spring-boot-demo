@@ -52,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .authorizeRequests().anyRequest().authenticated().and()
 
         // Except for the login page which we permit direct access to
-        .formLogin().loginPage("/login").failureUrl("/login?error").permitAll().and()
+        .formLogin().loginPage("/login").defaultSuccessUrl("/", true).failureUrl("/login?error").permitAll().and()
 
         // And logout is permitted as well
         .logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll().and()

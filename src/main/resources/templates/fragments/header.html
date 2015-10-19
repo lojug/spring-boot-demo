@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Fragment - Header</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../static/css/main.css"
+          th:href="@{css/main.css}" rel="stylesheet" media="screen"/>
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse" th:fragment="header">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" >
+                    <li class="active"><a href="#" th:href="@{/}">Home</a></li>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/courses}">Courses</a></li>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/students}">Students</a></li>
+                    <li sec:authorize="hasRole('ROLE_STUDENT')"><a href="#" th:href="@{'/student/edit/'+${student.id}}">Profile / Course Enrollment</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/logout" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

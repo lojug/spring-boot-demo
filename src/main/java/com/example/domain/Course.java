@@ -19,9 +19,6 @@ public class Course {
     private String courseDescription;
 
     @ManyToMany(fetch=FetchType.LAZY, mappedBy = "courses")
-    private Set<Teacher> teachers = new HashSet<>();
-
-    @ManyToMany(fetch=FetchType.LAZY, mappedBy = "courses")
     private Set<Student> students = new HashSet<>();
 
     public Long getId() {
@@ -46,14 +43,6 @@ public class Course {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
-    }
-
-    public Set<Teacher> getTeachers() {
-        return teachers;
-    }
-
-    public void setTeachers(Set<Teacher> teachers) {
-        this.teachers = teachers;
     }
 
     public Set<Student> getStudents() {

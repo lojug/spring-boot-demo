@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>School Website - Student Listing Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.5/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../static/css/main.css"
+          th:href="@{css/main.css}" rel="stylesheet" media="screen"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header">
+</div>
+
+<div class="container">
+
+    <h1>Student Listing</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Enrolled Courses</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.name}">Sample Student</td>
+            <td>
+                <ul>
+                    <li th:each="course : ${student.courses}" th:text="${course.courseName}">Sample Course Name</li>
+                </ul>
+            </td>
+            <td><a href="#" data-th-href="@{'/student/edit/'+${student.id}}">edit</a></td>
+            <td><a href="#" data-th-href="@{'/student/delete/'+${student.id}}">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <h1>Create a New student</h1>
+    <form role="form" th:action="@{/student/save}" th:object="${student}" method="post">
+        <div class="form-group">
+            <label for="name">Student Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" class="form-control" id="address" name="address" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Student Name:</label>
+            <input type="email" class="form-control" id="email" name="email" required="required"/>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required="required" />
+        </div>
+        <button type="submit" class="btn btn-default">Create</button>
+    </form>
+
+</div>
+
+</body>
+</html>
