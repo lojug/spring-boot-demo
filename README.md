@@ -1,6 +1,6 @@
 # Spring Boot Demo
 
-`## Overview
+## Overview
 
 This project demonstrates a typical full stack web application.  To illustrate how easy it is to get up and going 
 with Spring Boot we have built a school enrollment web app.  
