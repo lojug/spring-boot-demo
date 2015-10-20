@@ -42,19 +42,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        // Allow webjars
-        http.authorizeRequests().antMatchers("/webjars/**").permitAll().and()
+        // Authorize application specific URLs
+        http.authorizeRequests().antMatchers("/", "/student/**", "/course/**", "/students", "/courses")
+            .authenticated().and()
 
-        // allow access to the H2 console
-        .authorizeRequests().antMatchers("/h2-console/**").permitAll().and()
-
-        // Every other request must be authorized, so authentication needs to happen
-        .authorizeRequests().anyRequest().authenticated().and()
-
-        // Except for the login page which we permit direct access to
+        // Configure the login rules
         .formLogin().loginPage("/login").defaultSuccessUrl("/", true).failureUrl("/login?error").permitAll().and()
 
-        // And logout is permitted as well
+        // Configure what happens on logout
         .logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll().and()
 
         // Disable Cross Site Request Forgery, nice feature but annoying for this demo
