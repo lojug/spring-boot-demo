@@ -1,5 +1,17 @@
 # Spring Boot Demo
 
+`## Overview
+
+This project demonstrates a typical full stack web application.  To illustrate how easy it is to get up and going 
+with Spring Boot we have built a school enrollment web app.  
+
+The stack includes:
+
+- JQuery, Bootstrap and Thymeleaf for the UI
+- Spring MVC to glue the backend and UI
+- JPA, an API to persist data
+- H2 database to store data
+
 ## POM file savings with Spring Boot
  
 Instead of dozens of maven dependencies we have 5 spring boot dependencies.
